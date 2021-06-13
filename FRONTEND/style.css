@@ -48,14 +48,14 @@ ul{
 }
 
 /*corps*/
-.container{
+#container{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
 }
 
-.box{
+#box{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -63,14 +63,18 @@ ul{
     width: 95%;
 }
 
-.image{
+#produit{
+    width: 350px;
+}
+
+#image{
     height: 300px;
     width: 350px;
     object-fit: cover;
     object-position: center;
 }
 
-.details{
+#details{
     padding: 10px 20px;
     margin: 0px;
 }
