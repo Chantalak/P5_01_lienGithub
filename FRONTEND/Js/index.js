@@ -1,4 +1,10 @@
-const affichageName = document.querySelector("#name");
+document.body.onload = addElement;
+
+function addElement () {
+  var newDiv = document.createElement("div")
+}
+
+/*const affichageName = document.querySelector("#name");
 const affichagePrice = document.querySelector("#price");
 const affichageDescription = document.querySelector("#description");
 
@@ -26,5 +32,5 @@ fetch ("http://localhost:3000/api/cameras")
   })
   .catch(function(err) {
     console.log(err) 
-  });
+  });*/
 
