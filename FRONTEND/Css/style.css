@@ -57,29 +57,24 @@ ul{
 
 #box{
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
-    width: 95%;
+    padding: 1% 2% 1% 2%;
 }
 
-#produit{
+.produit{
     width: 350px;
 }
 
-#image{
-    height: 300px;
-    width: 350px;
-    object-fit: cover;
-    object-position: center;
+.image{
+    width: 100%;
 }
 
 #details{
-    padding: 10px 20px;
-    margin: 0px;
+    padding-bottom: 2%;
 }
 
-h2, p{
+h2, 
+p{
     margin: 0px;
-    color: black;
 }
