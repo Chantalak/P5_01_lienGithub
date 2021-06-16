@@ -1,36 +1,41 @@
-document.body.onload = addElement;
+const titleH1 = document.createElement("h1");
+    titleH1.innerHTML = "Appareils Photo Vintage";
+    const placeH1 = document.querySelector("#presentation").appendChild(titleH1);
 
-function addElement () {
-  var newDiv = document.createElement("div")
-}
 
-/*const affichageName = document.querySelector("#name");
-const affichagePrice = document.querySelector("#price");
-const affichageDescription = document.querySelector("#description");
-
-console.log(affichagePrice)
-
+//Récupérer données de l'API
 fetch ("http://localhost:3000/api/cameras")
-
   .then((res) => {
     if (res.ok) {
       return res.json();
     }
   })
   .then((value) => {
-    console.log(value[0]);
+    var i;
+    for (i = 0; i < value.length ; i++){ 
+      document.querySelector("#box").innerHTML += `<a href="FRONTEND/View/produit.html" class="produit" >
+                                            <img class="image" src="${value[i].imageUrl}" alt="appareil photo vintage">
+                                            <div id="details">
+                                              <h2 id="name">${value[i].name}</h2>
+                                              <p id="price">${value[i].price}</p>
+                                              <p id="description">${value[i].description}</p> 
+                                              </div>
+                                          </a>
+                                          `;
+    }
+  
 
-    const cameraName = value[0].name;
-    const cameraPrice = value[0].price;
-    const cameraDescription = value[0].description;
-
-    affichageName.innerHTML = cameraName;
-    affichagePrice.innerHTML = cameraPrice;
-    affichageDescription.innerHTML = cameraDescription;
-    
-    
   })
   .catch(function(err) {
     console.log(err) 
-  });*/
+  });
+
+  
+
+
+
+
+
+  
+
 
