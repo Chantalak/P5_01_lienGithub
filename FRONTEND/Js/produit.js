@@ -1,4 +1,4 @@
-/*--- Récupération de la chaine de requete dans l'URL ---*/
+//--- Récupération de la chaine de requete dans l'URL ---
 const queryStringUrlId = window.location.search;
 
 // Récupérer ID
@@ -18,22 +18,5 @@ fetchIdJSON().then(idProduct => {
 });
 
  // Afficher les caractéristiques du produit dans le DOM
-document.querySelector(".main").innerHTML += `
-  <div class="main_image">
-      <img class="image-loading" src="${idProduct.imageUrl}" alt="appareil photo vintage">
-  </div>
-  <div class="main_description">
-      <div>
-          <h1 class="name">Nom</h1>
-          <p class="price">Prix</p>
-      </div>
-      <div class="product_lense">
-          <div class="1">lense 1</div>
-          <div class="2">lense 2</div>
-      </div>
-      <button class="button"><a href="/FRONTEND/View/panier.html"> AJOUTER AU PANIER</a></button>
-      <div>
-          <p class="description">Description</p> 
-      </div>
-  </div>`;
+
 
