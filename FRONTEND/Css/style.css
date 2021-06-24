@@ -48,14 +48,14 @@ ul{
 }
 
 /*corps*/
-#container{
+.container{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
 }
 
-#box{
+.box{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -70,7 +70,7 @@ ul{
     width: 100%;
 }
 
-#details{
+.details{
     padding-bottom: 2%;
 }
 
