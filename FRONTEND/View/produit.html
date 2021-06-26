@@ -11,12 +11,14 @@
 
         <script src="https://kit.fontawesome.com/fa75e0dafd.js" crossorigin="anonymous"></script>
 
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
         <link rel="stylesheet" href="/FRONTEND/Css/style.css" /> 
         <title>Appareil Photo Vintage Orinoco - Page produit</title>
     </head>
 
     <body>
-        <div id="bloc_page">
+        <div id="bloc_page" class="container-fluid">
             <header class="header">
                 <a href="#">
                     <img class="logo" src="/BACKEND/images/logo.png" alt="logo Orinoco"/>
@@ -24,24 +26,24 @@
                 <nav class="nav">
                     <ul class="menu">
                         <li class="liste"><a href="#"> Mon compte</a></li>
-                        <li class="liste"><a href="/FRONTEND/View/panier.html"></a><i class="fas fa-shopping-cart"></i>Panier</a></li>
+                        <li class="liste"><a href="/FRONTEND/View/panier.html"><i class="fas fa-shopping-cart"></i>Panier</a></li>
                     </ul>
                 </nav>
             </header>
 
             <main class="main">
-
-                 <div class="main_image">
-                    <img class="image-loading" src="" alt="appareil photo vintage">
+                <div class="main_image">
+                    <img class="image_loading" src="" alt="appareil photo vintage">
                 </div>
                 <div class="main_description">
                     <div>
                         <h1 class="name">Nom</h1>
                         <p class="price">Prix</p>
                     </div>
-                    <select class="product_lense">
-                        <div class="1">lense 1</div>
-                        <div class="2">lense 2</div>
+                    <p>Choix des lentilles :</p>
+                    <select name="lenses" id="cameras_lenses">
+                        <option value="lense1" class="lense1">lense 1</option>
+                        <option value="lense2" class="lense2">lense 2</option>
                     </select>
                     <button class="button"><a href="/FRONTEND/View/panier.html"> AJOUTER AU PANIER</a></button>
                     <div>

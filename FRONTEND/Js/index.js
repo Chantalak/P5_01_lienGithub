@@ -7,8 +7,9 @@ function addCameras(value) {
     //linksCameras
     var a = document.createElement("a");
     a.className = "produit";
-    a.href = `"/FRONTEND/View/produit.html?id=${value[i]._id}"`;
+    a.href = `/FRONTEND/View/produit.html?id=${value[i]._id}`;
     box.appendChild(a);
+    console.log(a)
 
     //ImagesCameras
     var img = document.createElement("img");

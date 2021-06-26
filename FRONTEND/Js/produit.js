@@ -14,9 +14,30 @@ async function fetchIdJSON() {
 
 fetchIdJSON().then(idProduct => {
   idProduct; 
-  console.log(idProduct)
+  console.log(idProduct);
+  displayProduct(idProduct);
 });
 
- // Afficher les caractéristiques du produit dans le DOM
+// Afficher les caractéristiques du produit dans le DOM
+function displayProduct(idProduct) {
+  var image = document.querySelector(".image_loading");
+  image.src = idProduct.imageUrl;
 
+  var name = document.querySelector(".name");
+  name.textContent = idProduct.name;
 
+  var price = document.querySelector(".price");
+  price.textContent = idProduct.price;
+
+  var description = document.querySelector(".description");
+  description.textContent = idProduct.description;
+
+  //lentiles caméras 
+  var lense1 = document.querySelector(".lense1");
+  lense1.textContent = idProduct.lenses[0];
+
+  var lense2 = document.querySelector(".lense2");
+  lense2.textContent = idProduct.lenses[1];
+}
+
+//ajouter le produit au panier 
