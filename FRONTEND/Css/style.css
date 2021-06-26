@@ -8,7 +8,13 @@ body{
 
 a{
     text-decoration: none;
-    color: black;
+    list-style-type: none;
+    color: rgb(212, 162, 104);
+}
+
+a:hover{
+    text-decoration: none;
+    color: rgb(212, 162, 104);
 }
 
 ul{
@@ -16,8 +22,9 @@ ul{
 }
 
 #bloc_page{
-    width: 100%;
-    max-width: 1920px;
+    background-color: rgb(46, 43, 43);
+    color: rgb(212, 162, 104);
+    padding: 0px;
 }
 
 /*entête*/
@@ -27,6 +34,7 @@ ul{
     align-items: center;
     padding: 1.5%;
     background-color: #e9e9e9;
+    width: 100%;
 }
 
 .logo{
@@ -77,4 +85,26 @@ ul{
 h2, 
 p{
     margin: 0px;
+}
+
+/*page produit*/
+.main{
+    display: flex;
+}
+
+.main_image{
+    width: 50%;
+    padding: 4%;
+}
+
+.image_loading{
+    width: 100%;
+    object-fit: cover;
+}
+
+.main_description{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 1%;
 }
