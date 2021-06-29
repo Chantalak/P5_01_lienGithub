@@ -1,42 +1,65 @@
-//Titre h1 de la page 
-const titleH1 = document.createElement("h1");
-    titleH1.innerHTML = "Appareils Photo Vintage";
-    const placeH1 = document.querySelector("#presentation").appendChild(titleH1);
+var box = document.querySelector(".box");
+
+function addCameras(value) {
+
+  for (var i = 0; i < value.length; i++){ 
+
+    //linksCameras
+    var a = document.createElement("a");
+    a.className = "produit";
+    a.href = `/FRONTEND/View/produit.html?id=${value[i]._id}`;
+    box.appendChild(a);
+    console.log(a)
+
+    //ImagesCameras
+    var img = document.createElement("img");
+    img.className = "image";
+    img.src = value[i].imageUrl;
+    img.alt = "appareil photo vintage";
+    a.appendChild(img);
+
+    //details : name + price + description
+    //DivDetails 
+    var div = document.createElement("div");
+    div.className = "details";
+    a.appendChild(div);
+
+    //name
+    let h2 = document.createElement("h2");
+    h2.className = "name";
+    h2.textContent = value[i].name;
+    div.appendChild(h2);
+
+    //price
+    let p1 = document.createElement("p");
+    p1.className ="price";
+    p1.textContent = value[i].price;
+    div.appendChild(p1);
+
+    //description
+    let p2 = document.createElement("p");
+    p2.className ="description";
+    p2.textContent = value[i].description;
+    div.appendChild(p2);
+  }
+}
 
 
 //Récupérer données de l'API + afficher contenu de la page web 
-fetch ("http://localhost:3000/api/cameras")
-  .then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-  })
-  .then((value) => {
-    console.log(value)
-    var i;
-    for (i = 0; i < value.length ; i++){ 
-      document.querySelector("#box").innerHTML +=
-      `<a href="FRONTEND/View/produit.html?id=${value[i]._id}" class="produit" >
-          <img class="image" src="${value[i].imageUrl}" alt="appareil photo vintage">
-          <div id="details">
-            <h2 id="name">${value[i].name}</h2>
-            <p id="price">${value[i].price}</p>
-            <p id="description">${value[i].description}</p> 
-            </div>
-        </a>
-        `;
-    }
-  })
-  .catch(function(err) {
-    console.log(err) 
-  });
+//fonction asynchrone immédiatement appelée 
+async function displayCameras() {
+  try {
+    let res = await fetch ("http://localhost:3000/api/cameras");
+      if (res.ok) {
+        let value = await res.json();
+        addCameras(value);
+        console.log(value);
+      } else { 
+        console.error(err)
+      }
+  } catch (e) {
+    console.log("error"); 
+  }
+}
 
-  
-
-
-
-
-
-  
-
-
+displayCameras();

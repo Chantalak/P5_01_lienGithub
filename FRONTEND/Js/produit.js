@@ -1,4 +1,4 @@
-/*--- Récupération de la chaine de requete dans l'URL ---*/
+//--- Récupération de la chaine de requete dans l'URL ---
 const queryStringUrlId = window.location.search;
 
 // Récupérer ID
@@ -14,26 +14,30 @@ async function fetchIdJSON() {
 
 fetchIdJSON().then(idProduct => {
   idProduct; 
-  console.log(idProduct)
+  console.log(idProduct);
+  displayProduct(idProduct);
 });
 
- // Afficher les caractéristiques du produit dans le DOM
-document.querySelector(".main").innerHTML += `
-  <div class="main_image">
-      <img class="image-loading" src="${idProduct.imageUrl}" alt="appareil photo vintage">
-  </div>
-  <div class="main_description">
-      <div>
-          <h1 class="name">Nom</h1>
-          <p class="price">Prix</p>
-      </div>
-      <div class="product_lense">
-          <div class="1">lense 1</div>
-          <div class="2">lense 2</div>
-      </div>
-      <button class="button"><a href="/FRONTEND/View/panier.html"> AJOUTER AU PANIER</a></button>
-      <div>
-          <p class="description">Description</p> 
-      </div>
-  </div>`;
+// Afficher les caractéristiques du produit dans le DOM
+function displayProduct(idProduct) {
+  var image = document.querySelector(".image_loading");
+  image.src = idProduct.imageUrl;
 
+  var name = document.querySelector(".name");
+  name.textContent = idProduct.name;
+
+  var price = document.querySelector(".price");
+  price.textContent = idProduct.price;
+
+  var description = document.querySelector(".description");
+  description.textContent = idProduct.description;
+
+  //lentiles caméras 
+  var lense1 = document.querySelector(".lense1");
+  lense1.textContent = idProduct.lenses[0];
+
+  var lense2 = document.querySelector(".lense2");
+  lense2.textContent = idProduct.lenses[1];
+}
+
+//ajouter le produit au panier 
