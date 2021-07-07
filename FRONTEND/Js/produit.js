@@ -16,6 +16,7 @@ fetchIdJSON().then(idProduct => {
   idProduct; 
   console.log(idProduct);
   displayProduct(idProduct);
+  selectLenses(idProduct);
 });
 
 // Afficher les caractéristiques du produit dans le DOM
@@ -27,17 +28,25 @@ function displayProduct(idProduct) {
   name.textContent = idProduct.name;
 
   var price = document.querySelector(".price");
-  price.textContent = idProduct.price;
+  price.textContent = idProduct.price/100;
 
   var description = document.querySelector(".description");
   description.textContent = idProduct.description;
-
-  //lentiles caméras 
-  var lense1 = document.querySelector(".lense1");
-  lense1.textContent = idProduct.lenses[0];
-
-  var lense2 = document.querySelector(".lense2");
-  lense2.textContent = idProduct.lenses[1];
 }
 
-//ajouter le produit au panier 
+//choix des lentilles 
+function selectLenses(idProduct) {
+  var lensesChoose = idProduct.lenses; 
+  console.log(lensesChoose)
+
+  for (var i = 0; i < lensesChoose.length; i++){ 
+    var lenses = document.querySelector(".lense");
+    lenses.textContent = lensesChoose[i];
+    console.log(lenses);
+  }
+ 
+}
+
+//ajout produit au panier
+const idlenses = document.querySelector("#cameras_lenses")
+
