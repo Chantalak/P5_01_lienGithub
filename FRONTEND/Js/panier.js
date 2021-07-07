@@ -1,5 +1,8 @@
-//résumé des produits dans la panier 
+
+
+//résumé produits dans le panier
 
 //prix total 
 
 //formulaire 
+
