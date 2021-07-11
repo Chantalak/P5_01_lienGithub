@@ -1,18 +1,16 @@
 //---Récupérer toutes les données du localstorage 
 let elementForm = JSON.parse(localStorage.getItem("element"));
 //console.log(elementForm)
-
 const panier = document.querySelector(".panier_body");
-console.log(panier)
 
 //panier vide l'afficher 
 if (elementForm === null) {
     console.log("le panier est vide");
 } else{
     // afficher les produits du local storage 
-    let arrayForm = [];
     for (i = 0; i < elementForm.length; i++) {
-        arrayForm[i] = camerasDisplay(elementForm);
+        camerasDisplay(elementForm);
+        
     }
 }   
 
@@ -52,6 +50,4 @@ function camerasDisplay(elementForm) {
     row5.textContent = elementForm[i].prix;
     tr.appendChild(row5);
 }
-
-
 
