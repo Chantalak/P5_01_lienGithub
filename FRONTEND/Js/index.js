@@ -33,7 +33,7 @@ function addCameras(value) {
     //price
     let p1 = document.createElement("p");
     p1.className ="price";
-    p1.textContent = value[i].price /100;
+    p1.textContent = value[i].price /100 + "€" ;
     div.appendChild(p1);
 
     //description

@@ -30,92 +30,35 @@
                 </nav>
             </header>
 
-            <!--<div class="cart_section">
-                <div class="row">
-                    <div class="col-lg-10 offset-lg-1">
-                        <div class="cart_container">
-                            <div class="cart_title">Shopping Cart<small> (1 item in your cart) </small></div>
-                            
-                            <div class="cart_items">
-                                <ul class="cart_list">
-                                    <li class="cart_item clearfix">
-                                        <div class="cart_item_image"><img src="" alt=""></div>
-                                        <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
-                                           
-                                            <div class="cart_item_name cart_info_col">
-                                                <div class="cart_item_title">Name</div>
-                                                <div class="name">Nom</div>
-                                            </div>
-                                            <div class="cart_item_color cart_info_col">
-                                                <div class="cart_item_title">Lentilles</div>
-                                                <div class="lense">lenses</div>
-                                            </div>
-                                            <div class="cart_item_quantity cart_info_col">
-                                                <div class="cart_item_title">Quantité</div>
-                                                <div class="quantity">chiffre</div>
-                                            </div>
-                                            <div class="cart_item_price cart_info_col">
-                                                <div class="cart_item_title">Prix</div>
-                                                <div class="price">price</div>
-                                            </div>
-                                            <div class="cart_item_total cart_info_col">
-                                                <div class="cart_item_title">Total</div>
-                                                <div class="total">chiffre</div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="order_total">
-                                <div class="order_total_content text-md-right">
-                                    <div class="order_total_title">Order Total:</div>
-                                    <div class="order_total_amount">Total</div>
-                                </div>
-                            </div>
-
-                            <div class="cart_buttons"> 
-                                <button type="button" class="button cart_button_clear"><a href="../View/index.html">Continue Shopping</a></button> 
-                                <button type="button" class="button cart_button_checkout"><a href="../View/confirmation.html">Paiement</a></button> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
-
-            <section >
-                <table>
-                    <thead>
-                        <tr class="cart_info_col">
-                            <th class="title">Produit</th>
-                            <th class="title">Nom</th>
-                            <th class="title">Lentilles</th>
-                            <th class="title">Quantité</th>
-                            <th class="title">Prix</th>
-                            <th class="title">Total</th>
+            <section class="container_panier">
+                <table class="panier row">
+                    <thead class="panier_head">
+                        <tr class="title_panier">
+                            <th class="title col-4"></th>
+                            <th class="title col-2">Nom</th>
+                            <th class="title col-2">Lentilles</th>
+                            <th class="title col-2">Quantité</th>
+                            <th class="title col-2">Prix</th>
                         </tr>
                     </thead>
 
-                    <tfoot>
-                        <tr class="cart_info_col">
-                        <td class="image"><img src="" alt=""></td>
-                        <td class="name">Name</td>
-                        <td class="lense">Lenses</td>
-                        <td class="quantity">Quantity</td>
-                        <td class="price">Price</td>
-                        <td class="total">Total</td>
-                    </tr>
+                    <tbody class="panier_body">
+                    </tbody>
+
+                    <tfoot class="panier_foot">
+                        <tr class="row">
+                            <td class="col-10">Total à payer:</td>
+                            <td class="total col-2">Total</td>
+                        </tr>
                     </tfoot>
                 </table>
 
-                <tbody>
-                    <tr>
-                        <td><button type="button" class="button cart_button_clear"><a href="../View/index.html">Continue Shopping</a></button></td>
-                    </tr>
-                </tbody>
+                <div>
+                    <button type="button" class="button cart_button_clear"><a href="../View/index.html">Continuer son Shopping</a></button>
+                </div>
             </section>
               
-            <section>
+            <!--section>
                 <form>
                     <div class="form-row">
                         <div class="form-group col-md-6">
@@ -162,11 +105,11 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Sign in</button>
                 </form>
-            </section>
+            </section-->
         </div> 
         
         <!--script-->
-        <script type="text/javascript" src="/FRONTEND/Js/index.js"></script>
+        <script type="text/javascript" src="/FRONTEND/Js/panier.js"></script>
     </body>
 
 </html>

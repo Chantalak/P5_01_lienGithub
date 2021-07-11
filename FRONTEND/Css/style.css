@@ -108,3 +108,11 @@ p{
     width: 50%;
     padding: 1%;
 }
+
+/*panier*/ 
+.panier{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    width: 100%;
+}
