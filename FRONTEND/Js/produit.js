@@ -14,9 +14,10 @@ async function fetchIdJSON() {
 
 fetchIdJSON().then(idProduct => {
   idProduct; 
-  console.log(idProduct);
+ 
   displayProduct(idProduct);
   selectLenses(idProduct);
+  exportLenses(idProduct);
 });
 
 // Afficher les caractéristiques du produit dans le DOM
@@ -28,7 +29,7 @@ function displayProduct(idProduct) {
   name.textContent = idProduct.name;
 
   var price = document.querySelector(".price");
-  price.textContent = idProduct.price/100;
+  price.textContent = idProduct.price/100 + "€";
 
   var description = document.querySelector(".description");
   description.textContent = idProduct.description;
@@ -37,16 +38,61 @@ function displayProduct(idProduct) {
 //choix des lentilles 
 function selectLenses(idProduct) {
   var lensesChoose = idProduct.lenses; 
-  console.log(lensesChoose)
-
-  for (var i = 0; i < lensesChoose.length; i++){ 
+  
+  for (var i = 0; i < idProduct.lenses.length; i++){ 
     var lenses = document.querySelector(".lense");
-    lenses.textContent = lensesChoose[i];
-    console.log(lenses);
+    lenses = lensesChoose[i];
+
+    var option = document.createElement('option');
+    option.className = "lense";
+    option.value = lensesChoose[i];
+    option.textContent = lenses;
+    cameras_lenses.appendChild(option);
   }
- 
 }
 
-//ajout produit au panier
-const idlenses = document.querySelector("#cameras_lenses")
+//---Récupération données sélectionnées par utilisateur et envoie panier---
 
+function exportLenses(idProduct) {
+  //Selection id formulaire 
+  const idForm = document.querySelector("#cameras_lenses");
+  const optionForm = idForm.value;
+
+  //sélectionner bouton ajouter dans le panier 
+  const sendPanier = document.querySelector("#btn_primary");
+
+  //AddEventListener sur le bouton et envoyer le panier 
+  sendPanier.addEventListener("click", (e)=>{
+  e.preventDefault();
+
+    //Récupérer valeur du formulaire 
+    let lensesAdd = {
+      imageProduit: idProduct.imageUrl,
+      nomProduit: idProduct.name,
+      idProduit: idProduct._id,
+      optionProduit: idForm.value,
+      quantité: 1,
+      prix: idProduct.price / 100,
+    }
+    console.log(lensesAdd);
+
+    //---Stockage des données--- 
+    let elementForm = JSON.parse(localStorage.getItem("element"));
+    
+    //fonction pour ne pas répéter le code
+    const camerasAdd = () => {
+      elementForm.push(lensesAdd);
+      localStorage.setItem("element", JSON.stringify(elementForm));
+    };
+
+    // Vérifie si la clé existe.
+    if (elementForm){
+      camerasAdd();
+    
+    //si clé n'existe pas 
+    } else{
+      elementForm = [];
+      camerasAdd();
+    }
+  });
+}
