@@ -44,7 +44,6 @@ function addCameras(value) {
   }
 }
 
-
 //Récupérer données de l'API + afficher contenu de la page web 
 //fonction asynchrone immédiatement appelée 
 async function displayCameras() {
