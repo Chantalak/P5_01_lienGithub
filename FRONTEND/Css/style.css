@@ -4,6 +4,7 @@ body{
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
+    background-color: rgb(46, 43, 43);
 }
 
 a{
@@ -22,7 +23,6 @@ ul{
 }
 
 #bloc_page{
-    background-color: rgb(46, 43, 43);
     color: rgb(212, 162, 104);
     padding: 0px;
 }

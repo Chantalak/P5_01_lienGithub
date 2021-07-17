@@ -30,86 +30,84 @@
                 </nav>
             </header>
 
-            <section class="container_panier">
-                <table class="panier row">
-                    <thead class="panier_head">
-                        <tr class="title_panier">
-                            <th class="title col-4"></th>
-                            <th class="title col-2">Nom</th>
-                            <th class="title col-2">Lentilles</th>
-                            <th class="title col-2">Quantité</th>
-                            <th class="title col-2">Prix</th>
-                        </tr>
-                    </thead>
+            <main id="vide">
+                <section class="container_panier">
+                    <table class="panier">
+                        <thead class="panier_head col-12">
+                            <tr class="title_panier">
+                                <th class="col-4">Produit</th>
+                                <th class="col-2">Nom</th>
+                                <th class="col-2">Lentilles</th>
+                                <th class="col-2">Quantité</th>
+                                <th class="col-2">Prix</th>
+                            </tr>
+                        </thead>
 
-                    <tbody class="panier_body">
-                    </tbody>
+                        <tbody class="panier_body">
+                        </tbody>
 
-                    <tfoot class="panier_foot">
-                        <tr class="row">
-                            <td class="col-10">Total à payer:</td>
-                            <td class="total col-2">Total</td>
-                        </tr>
-                    </tfoot>
-                </table>
+                        <tfoot class="panier_foot">
+                            <tr class="row">
+                                <td class="col-10">Total à payer :</td>
+                                <td class="total col-2">Total</td>
+                            </tr>
+                        </tfoot>
+                    </table>
 
-                <div>
-                    <button type="button" class="button cart_button_clear"><a href="../View/index.html">Continuer son Shopping</a></button>
-                </div>
-            </section>
-              
-            <!--section>
-                <form>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                        <label for="inputEmail4">Email</label>
-                        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-                        </div>
-                        <div class="form-group col-md-6">
-                        <label for="inputPassword4">Password</label>
-                        <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-                        </div>
+                    <div>
+                        <button type="button" class="button cart_button_clear">Vider le panier</button>
+                        <button type="button" class="button return_home"><a href="../View/index.html">Continuer son Shopping</a></button>
                     </div>
-                    <div class="form-group">
-                        <label for="inputAddress">Address</label>
-                        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputAddress2">Address 2</label>
-                        <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                        <label for="inputCity">City</label>
-                        <input type="text" class="form-control" id="inputCity">
+                </section>
+                
+                <section>
+                    <form action="confirmation.html" method="POST"class="formulaire">
+                        <div class="form-row">
+                            <div class="col">
+                                <label for="lastName">Nom :</label>
+                                <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Nom" required>
+                            </div>
+                            <div class="col">
+                                <label for="firstName">Prénom :</label>
+                                <input type="text" id="firstName" name="firstName" class="form-control" placeholder="Prénom" required>
+                            </div>
                         </div>
-                        <div class="form-group col-md-4">
-                        <label for="inputState">State</label>
-                        <select id="inputState" class="form-control">
-                            <option selected>Choose...</option>
-                            <option>...</option>
-                        </select>
+                        <div class="form-group">
+                            <label for="address">Adresse :</label>
+                            <input type="text" id="address" name="address" class="form-control" placeholder="Adresse" required>
                         </div>
-                        <div class="form-group col-md-2">
-                        <label for="inputZip">Zip</label>
-                        <input type="text" class="form-control" id="inputZip">
+                        <div class="form-group">
+                            <label for="addressbis">Complément d'adresse :</label>
+                            <input type="text" id="addressbis" name="addressbis" class="form-control" placeholder="Complément d'adresse" required>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="gridCheck">
-                        <label class="form-check-label" for="gridCheck">
-                            Check me out
-                        </label>
+                        <div class="form-row">
+                            <div class="col">
+                                <label for="city">Ville :</label>
+                                <input type="text" id="city" name="city" class="form-control" placeholder="Ville" required>
+                            </div>
+                            <div class="col">
+                                <label for="Zip">Code postal :</label>
+                                <input type="text" id="zip" name="zip" class="form-control" placeholder="Code postal" required>
+                            </div>
                         </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Sign in</button>
-                </form>
-            </section-->
+                        <div class="form-group">
+                            <label for="Email">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" value="OK" class="btn-primary mb-2">Valider la commande</button>
+                        </div>
+                    </form>
+                </section>
+            </main>
+            <div class="panier_vide"></div>
         </div> 
+        
         
         <!--script-->
         <script type="text/javascript" src="/FRONTEND/Js/panier.js"></script>
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     </body>
 
 </html>
