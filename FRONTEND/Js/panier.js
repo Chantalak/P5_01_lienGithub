@@ -1,9 +1,7 @@
 //////////////////////////////////////////////PANIER//////////////////////////////////////////
 
-////////////////Variables
-let elementForm = JSON.parse(localStorage.getItem("element"));
-
-// array of product _id
+//Variables
+//Array of product_id
 let products = [];
 
 //Array pour le prix total du panier
@@ -23,7 +21,10 @@ class infoClients {
 }
 
 /////////////////////////////////////////PANIER ET LOCALSTORAGE//////////////////////////////////
-//Panier vide ou panier rempli 
+//Récupération des élements produit.html
+let elementForm = JSON.parse(localStorage.getItem("element"));
+
+//Option d'affichage des produits panier vie ou panier rempli 
 function CamerasStorage() {
     if (elementForm === null) {
         //Si panier vide 
@@ -47,6 +48,8 @@ function CamerasStorage() {
         }
     }   
 }
+
+CamerasStorage();
 
 //Ajout des éléments du panier
 function camerasDisplay(elementForm) {  
@@ -99,28 +102,6 @@ function CamerasPrice(elementform) {
     total.textContent = prixTotal;
 }
 
-//fonction asynchrone immédiatement appelée 
-async function displayPanier() {
-  try {
-    let res = await fetch ("http://localhost:3000/api/cameras");
-      if (res.ok) {
-        let cameras = await res.json();
-        //Prendre l'objet qu'on a sélectionné 
-        let element = JSON.parse(localStorage.getItem("element")) || {};
-        console.log(element);
-
-        CamerasStorage();
-
-      } else { 
-        console.error(err)
-      }
-  } catch (e) {
-    console.log("error"); 
-  }
-}
-
-displayPanier();
-
 //Rajouter option enlever caméra par caméra dans le panier//
 
 //Vider le panier 
@@ -140,7 +121,6 @@ function viderPanier() {
 viderPanier();
 
 ///////////////////////////////////////FORMULAIRE/////////////////////////////////////////////////////
-
 //Fonction contact pour données formulaire 
 function DataContact () {
     lastName = document.querySelector("#lastName").value;
@@ -157,45 +137,42 @@ function DataContact () {
 const bouton = document.querySelector(".btn-primary");
 
 //Addeventlistener sur bouton formulaire 
-bouton.addEventListener('click', (e) => {
-    e.preventDefault();    
+bouton.addEventListener('click', (e) =>{
+    //e.preventDefault(); 
+    DataContact();  
 
-    //Appelle fonction contact pour données formulaire 
-    DataContact();
-    
     //Mettre objet dans le localStorage
     localStorage.setItem("contact", JSON.stringify(contact));
 
-    //Mettre valeurs à envoyer sur le serveur 
-    const sendData = {
-        elementForm,
+    const update = {
         contact,
+        products,
     }
-    console.log(sendData)
-}) 
 
-//Garder les champs saisie
-function getDataForm(input){
-    //mettre contenu localStorage dans champ formulaire 
-    const dataFormulaire = localStorage.getItem("contact");
-    const dataFormulaireObjet = JSON.parse(dataFormulaire);
+    //elements de la methode post
+    const options = {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(update),
+    };
 
-    //mettre valeurs localStorage dans les champs du formulaire 
-    var input = document.querySelector(`#${input}`).value = dataFormulaireObjet[input];
-}
-
-getDataForm("lastName");
-getDataForm("firstName");
-getDataForm("address");
-getDataForm("addressbis");
-getDataForm("city");
-getDataForm("zip");
-getDataForm("email");
-
-
-   
-
-
-
-
+    //envoyer les données au serveur
+    async function pushData(){
+        await fetch("http://localhost:3000/api/cameras/order", options)
+            .then(res=>{
+                if(res.ok){
+                    console.log("données bien envoyées")
+                    window.location.href = "confirmation.html";
+                }
+            })
+            .catch(e=>{
+                console.log("error");
+            })
+    }
+    
+    //appelle de la fonction 
+    pushData();
+})
 
