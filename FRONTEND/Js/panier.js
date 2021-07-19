@@ -1,7 +1,9 @@
 //////////////////////////////////////////////PANIER//////////////////////////////////////////
 
-//Variables
-//Array of product_id
+////////////////Variables
+let elementForm = JSON.parse(localStorage.getItem("element"));
+
+// array of product _id
 let products = [];
 
 //Array pour le prix total du panier
@@ -9,22 +11,18 @@ const totalPrice = [];
 
 // Classe pour objet contact
 class infoClients {
-    constructor(lastName, firstName, address, addressbis, city, zip, email) {
+    constructor(lastName, firstName, address,  city, zip, email) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.address = address;
-        this.addressbis = addressbis;
+
         this.city = city;
-        this.zip = zip;
         this.email = email;
     }
 }
 
 /////////////////////////////////////////PANIER ET LOCALSTORAGE//////////////////////////////////
-//Récupération des élements produit.html
-let elementForm = JSON.parse(localStorage.getItem("element"));
-
-//Option d'affichage des produits panier vie ou panier rempli 
+//Panier vide ou panier rempli 
 function CamerasStorage() {
     if (elementForm === null) {
         //Si panier vide 
@@ -121,58 +119,81 @@ function viderPanier() {
 viderPanier();
 
 ///////////////////////////////////////FORMULAIRE/////////////////////////////////////////////////////
+
 //Fonction contact pour données formulaire 
 function DataContact () {
     lastName = document.querySelector("#lastName").value;
     firstName = document.querySelector("#firstName").value;
     address = document.querySelector("#address").value;
-    addressbis = document.querySelector("#addressbis").value;
     city = document.querySelector("#city").value;
-    zip = document.querySelector("#zip").value;
     email = document.querySelector("#email").value;
-    contact = new infoClients(lastName, firstName, address, addressbis, city, zip, email);
+    contact = new infoClients(lastName, firstName, address, city, email);
 };
 
 //bouton envoyer formulaire 
 const bouton = document.querySelector(".btn-primary");
 
-//Addeventlistener sur bouton formulaire 
-bouton.addEventListener('click', (e) =>{
-    //e.preventDefault(); 
-    DataContact();  
+//Validation du formulaire 
+validateForm();
 
+//Addeventlistener sur bouton formulaire 
+bouton.addEventListener('click', (e) => {
+    //e.preventDefault();    
+
+    //Appelle fonction contact pour données formulaire 
+    DataContact();
+    
     //Mettre objet dans le localStorage
     localStorage.setItem("contact", JSON.stringify(contact));
 
-    const update = {
+    //Mettre valeurs à envoyer sur le serveur 
+      const update = {
         contact,
         products,
     }
 
     //elements de la methode post
-    const options = {
-        method: 'POST',
-        headers: {
-        'Content-Type': 'application/json',
-        },
+    const options =  {
+        method: "POST",
         body: JSON.stringify(update),
+        headers: {
+        "Content-Type" : "application/json",
+        },
     };
 
-    //envoyer les données au serveur
     async function pushData(){
-        await fetch("http://localhost:3000/api/cameras/order", options)
+        fetch("http://localhost:3000/api/cameras/order", options)
             .then(res=>{
                 if(res.ok){
-                    console.log("données bien envoyées")
+                    console.log("données bien envoyées");
                     window.location.href = "confirmation.html";
+                }else{
+                    console.error(err)
                 }
-            })
-            .catch(e=>{
-                console.log("error");
+            }) 
+            .catch(err=>{
+                console.log("err");
             })
     }
-    
+
     //appelle de la fonction 
     pushData();
-})
+}) 
+
+function validateForm() {
+    let lastName = document.getElementById("#lastName").value;
+    let firstName = document.getElementById("#firstName").value;
+    let address = document.getElementById("#address").value;
+    let city = document.getElementById("#city").value;
+    let email = document.getElementById("#email").value;
+    if(lastName, firstName, address, city, email == "") {
+        alert("Remplissez ce champs")
+        return false;
+    }
+ 
+    alert("Toutes les données sont valides, envoyer au serveur!")
+    return true;
+}
+
+
 
