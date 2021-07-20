@@ -53,15 +53,15 @@ function camerasDisplay(elementForm) {
     var basket = document.querySelector(".panier_body");
 
     var tr = document.createElement("tr");
-    tr.className = "contenu_panier";
+    tr.className = "contenu_panier form-row";
     basket.appendChild(tr);
 
     let row1 = document.createElement("td");
-    row1.className = "col-4";
+    row1.className = "col-2";
     tr.appendChild(row1);
 
     var img = document.createElement("img");
-    img.className = "image";
+    img.className = "image_panier";
     img.src = elementForm[i].imageProduit;
     img.alt = "appareil photo vintage";
     row1.appendChild(img);
@@ -99,7 +99,7 @@ function CamerasPrice(elementform) {
     localStorage.setItem("prixTotal", JSON.stringify(prixTotal));
    
     let total = document.querySelector(".total")
-    total.textContent = prixTotal;
+    total.textContent = prixTotal + "€";
 }
 
 //Rajouter option enlever caméra par caméra dans le panier//
