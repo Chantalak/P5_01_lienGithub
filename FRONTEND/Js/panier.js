@@ -132,15 +132,31 @@ function DataContact () {
     contact = new infoClients(lastName, firstName, address, city, email);
 };
 
-//Focntion validation du formulaire 
+
 function validateForm() {
-    if(lastName, firstName, address, city, email == "") {
-        alert("Remplissez ce champs")
+    var form = document.querySelector("#formulaire");
+
+    var lastName = form.lastName.value;
+    var firstName = form.firstName.value;
+    var address = form.address.value;
+    var city = form.city.value;
+    var email = form.email.value;
+    console.log(lastName);
+    console.log(firstName);
+    console.log(address);
+    console.log(city);
+    console.log(email);
+    if (lastName != "" && /^[a-z A-Z]$/.test(lastName), 
+    firstName != "" && /^[a-z A-Z]$/.test(firstName), 
+    address != "" && /^[a-z A-Z 0-9]$/.test(address),
+    city != "" && /^[a-z A-Z]$/.test(city), 
+    email != "" && /^[a-z 0-9._-]+@[a-z 0-9.-]{2,}[.][a-z]{2,3}$/.test(email)) {
+        alert("Valide");
+        return true;
+    }else{
+        alert("Invalide");
         return false;
     }
- 
-    alert("Toutes les données sont valides, envoyer au serveur!")
-    return true;
 }
 
 function dataButton() {
@@ -148,17 +164,16 @@ function dataButton() {
     //bouton envoyer formulaire 
     const bouton = document.querySelector(".btn-primary");
 
-    validateForm();
-
     bouton.addEventListener('click', (e) => {
-        e.preventDefault();    
+        e.preventDefault();
+        //Appelle de la fonction de validation 
+        validateForm();
 
         //Appelle fonction contact pour données formulaire 
         DataContact();
 
         //Mettre objet dans le localStorage
         localStorage.setItem("contact", JSON.stringify(contact));
-
         
         //Mettre valeurs à envoyer sur le serveur 
             const update = {
