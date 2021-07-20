@@ -6,7 +6,7 @@ function addCameras(value) {
 
     //linksCameras
     var a = document.createElement("a");
-    a.className = "produit";
+    a.className = "produit col-auto";
     a.href = `/FRONTEND/View/produit.html?id=${value[i]._id}`;
     box.appendChild(a);
     console.log(a)
@@ -37,10 +37,10 @@ function addCameras(value) {
     div.appendChild(p1);
 
     //description
-    let p2 = document.createElement("p");
-    p2.className ="description";
-    p2.textContent = value[i].description;
-    div.appendChild(p2);
+    //let p2 = document.createElement("p");
+    //p2.className ="description";
+    //p2.textContent = value[i].description;
+    //div.appendChild(p2);
   }
 }
 
