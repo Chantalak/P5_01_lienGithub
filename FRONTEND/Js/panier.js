@@ -132,7 +132,6 @@ function DataContact () {
     contact = new infoClients(lastName, firstName, address, city, email);
 };
 
-
 function validateForm() {
     var form = document.querySelector("#formulaire");
 
@@ -141,16 +140,12 @@ function validateForm() {
     var address = form.address.value;
     var city = form.city.value;
     var email = form.email.value;
-    console.log(lastName);
-    console.log(firstName);
-    console.log(address);
-    console.log(city);
-    console.log(email);
-    if (lastName != "" && /^[a-z A-Z]$/.test(lastName), 
-    firstName != "" && /^[a-z A-Z]$/.test(firstName), 
-    address != "" && /^[a-z A-Z 0-9]$/.test(address),
-    city != "" && /^[a-z A-Z]$/.test(city), 
-    email != "" && /^[a-z 0-9._-]+@[a-z 0-9.-]{2,}[.][a-z]{2,3}$/.test(email)) {
+  
+    if (lastName == "" && /^[a-z A-Z]$/.test(lastName), 
+    firstName == "" && /^[a-z A-Z]$/.test(firstName), 
+    address == "" && /^[a-z A-Z 0-9]$/.test(address),
+    city == "" && /^[a-z A-Z]$/.test(city), 
+    email == "" && /^[a-z 0-9._-]+@[a-z 0-9.-]{2,}[.][a-z]{2,3}$/.test(email)) {
         alert("Valide");
         return true;
     }else{
@@ -166,6 +161,7 @@ function dataButton() {
 
     bouton.addEventListener('click', (e) => {
         e.preventDefault();
+        
         //Appelle de la fonction de validation 
         validateForm();
 
