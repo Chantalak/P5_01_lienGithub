@@ -17,24 +17,28 @@
     </head>
 
     <body>
-        <div id="bloc_page" class="container-fluid">
-            <header class="header">
+        <div id="bloc_page">
+          <header class="header">
                 <a href="index.html">
                     <img class="logo" src="/BACKEND/images/logo.png" alt="logo Orinoco"/>
                 </a>
                 <nav class="nav">
                     <ul class="menu">
-                        <li class="liste"><a href="/FRONTEND/View/panier.html"><i class="fas fa-shopping-cart"></i></a></li>
+                        <li class="liste">
+                            <a href="/FRONTEND/View/panier.html">
+                                <i class="fas fa-shopping-cart"></i>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </header>
 
-            <main id="vide">
+            <main id="vide" class="container-fluid">
                 <section class="container_panier">
                     <table class="panier">
-                        <thead class="panier_head col-12">
-                            <tr class="title_panier">
-                                <th class="col-4">Produit</th>
+                        <thead class="panier_head">
+                            <tr class="title_panier form-row">
+                                <th class="col-2">Produit</th>
                                 <th class="col-2">Nom</th>
                                 <th class="col-2">Lentilles</th>
                                 <th class="col-2">Quantité</th>
@@ -46,8 +50,8 @@
                         </tbody>
 
                         <tfoot class="panier_foot">
-                            <tr class="row">
-                                <td class="col-10">Total à payer :</td>
+                            <tr class="form-row">
+                                <td class="col-10">Total :</td>
                                 <td class="total col-2">Total</td>
                             </tr>
                         </tfoot>
