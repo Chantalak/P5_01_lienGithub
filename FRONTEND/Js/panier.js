@@ -1,21 +1,10 @@
 //////////////////////////////////////////////PANIER//////////////////////////////////////////
-
 // array of product _id
 let products = [];
+console.log(products)
 
 //Array pour le prix total du panier
 const totalPrice = [];
-
-// Classe pour objet contact
-class infoClients {
-    constructor(lastName, firstName, address,  city, email) {
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.address = address;
-        this.city = city;
-        this.email = email;
-    }
-}
 
 /////////////////////////////////////////PANIER ET LOCALSTORAGE//////////////////////////////////
 //Récupération des élements produit.html
@@ -112,6 +101,8 @@ function viderPanier() {
 
         //méthode removeItem pour vider le localStorage
         localStorage.removeItem("element");
+        localStorage.removeItem("contact");
+        localStorage.removeItem("prixTotal")
 
         //recharge de la page html
         window.location.href = "panier.html";
@@ -121,56 +112,25 @@ function viderPanier() {
 viderPanier();
 
 ///////////////////////////////////////FORMULAIRE/////////////////////////////////////////////////////
-
-//Fonction contact pour données formulaire 
-function DataContact () {
-    lastName = document.querySelector("#lastName").value;
-    firstName = document.querySelector("#firstName").value;
-    address = document.querySelector("#address").value;
-    city = document.querySelector("#city").value;
-    email = document.querySelector("#email").value;
-    contact = new infoClients(lastName, firstName, address, city, email);
-};
-
-function validateForm() {
-    var form = document.querySelector("#formulaire");
-
-    var lastName = form.lastName.value;
-    var firstName = form.firstName.value;
-    var address = form.address.value;
-    var city = form.city.value;
-    var email = form.email.value;
-  
-    if (lastName == "" && /^[a-z A-Z]$/.test(lastName), 
-    firstName == "" && /^[a-z A-Z]$/.test(firstName), 
-    address == "" && /^[a-z A-Z 0-9]$/.test(address),
-    city == "" && /^[a-z A-Z]$/.test(city), 
-    email == "" && /^[a-z 0-9._-]+@[a-z 0-9.-]{2,}[.][a-z]{2,3}$/.test(email)) {
-        alert("Valide");
-        return true;
-    }else{
-        alert("Invalide");
-        return false;
-    }
-}
-
 function dataButton() {
-    
+
     //bouton envoyer formulaire 
     const bouton = document.querySelector(".btn-primary");
 
     bouton.addEventListener('click', (e) => {
-        e.preventDefault();
-        
-        //Appelle de la fonction de validation 
-        validateForm();
+        e.preventDefault();    
 
-        //Appelle fonction contact pour données formulaire 
-        DataContact();
+        const contact = {
+            lastName : document.querySelector("#nom").value,
+            firstName : document.querySelector("#prenom").value,
+            address : document.querySelector("#adresse").value,
+            city : document.querySelector("#ville").value,
+            email : document.querySelector("#mail").value,
+        };
 
         //Mettre objet dans le localStorage
         localStorage.setItem("contact", JSON.stringify(contact));
-        
+
         //Mettre valeurs à envoyer sur le serveur 
             const update = {
             contact,
@@ -178,7 +138,6 @@ function dataButton() {
         }
 
         pushData = async () => {
-            const location = window.location.hostname;
             //elements de la methode post
             const options = {
                 method: "POST",
@@ -206,13 +165,10 @@ function dataButton() {
                 console.log("err"); 
             }
         }
-
         //appelle de la fonction 
         pushData();
-        }) 
+    }) 
 }
 
 dataButton();
-
-
 
