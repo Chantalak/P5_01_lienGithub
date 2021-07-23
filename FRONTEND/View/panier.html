@@ -38,7 +38,7 @@
                     <table class="panier">
                         <thead class="panier_head">
                             <tr class="title_panier form-row">
-                                <th class="col-2">Produit</th>
+                                <th class="col-4">Produit</th>
                                 <th class="col-2">Nom</th>
                                 <th class="col-2">Lentilles</th>
                                 <th class="col-2">Quantité</th>
@@ -57,7 +57,7 @@
                         </tfoot>
                     </table>
 
-                    <div>
+                    <div class="btn_panier">
                         <button type="button" class="button cart_button_clear">Vider le panier</button>
                         <button type="button" class="button return_home"><a href="../View/index.html">Continuer son Shopping</a></button>
                     </div>
@@ -67,25 +67,25 @@
                     <form action="confirmation.html" method="POST" id="formulaire">
                         <div class="form-row">
                             <div class="col">
-                                <label for="nom">Nom :</label>
-                                <input type="text" id="nom" name="nom" class="form-control" placeholder="Nom" required>
+                                <label for="lastName">Nom :</label>
+                                <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Nom" required>
                             </div>
                             <div class="col">
-                                <label for="prenom">Prénom :</label>
-                                <input type="text" id="prenom" name="prenom" class="form-control" placeholder="Prénom" required>
+                                <label for="firstName">Prénom :</label>
+                                <input type="text" id="firstName" name="firstName" class="form-control" placeholder="Prénom" required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="adresse">Adresse :</label>
-                            <input type="text" id="adresse" name="adresse" class="form-control" placeholder="Adresse" required>
+                            <label for="address">Adresse :</label>
+                            <input type="text" id="address" name="address" class="form-control" placeholder="Adresse" required>
                         </div>
                         <div class="form-group">
-                            <label for="ville">Ville :</label>
-                            <input type="text" id="ville" name="ville" class="form-control" placeholder="Ville" required>
+                            <label for="city">Ville :</label>
+                            <input type="text" id="city" name="city" class="form-control" placeholder="Ville" required>
                         </div>
                         <div class="form-group">
-                            <label for="mail">Email</label>
-                            <input type="mail" id="mail" name="mail" class="form-control" placeholder="Email" required>
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
                         </div>
                         <div class="col-auto">
                             <button type="submit" value="OK" class="btn-primary mb-2">Valider la commande</button>

@@ -6,6 +6,17 @@ console.log(products)
 //Array pour le prix total du panier
 const totalPrice = [];
 
+// Classe pour objet contact
+class infoClients {
+    constructor(lastName, firstName, address,  city, email) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.address = address;
+        this.city = city;
+        this.email = email;
+    }
+}
+
 /////////////////////////////////////////PANIER ET LOCALSTORAGE//////////////////////////////////
 //Récupération des élements produit.html
 let elementForm = JSON.parse(localStorage.getItem("element"));
@@ -21,9 +32,14 @@ function CamerasStorage() {
         //Affichage icône si panier vide 
         var emptyPanier = document.querySelector(".panier_vide");
         let i = document.createElement("i");
-        i.className = "fas fa-shopping-basket";
+        i.className = "itext fas fa-shopping-basket";
         emptyPanier.appendChild(i);
         console.log(i);
+
+        var textPanier = document.createElement("p");
+        textPanier.textContent = "Le panier est vide.";
+        textPanier.className = "texte";
+        i.appendChild(textPanier);
 
     } else{
         // Afficher les produits du local storage 
@@ -46,7 +62,7 @@ function camerasDisplay(elementForm) {
     basket.appendChild(tr);
 
     let row1 = document.createElement("td");
-    row1.className = "col-2";
+    row1.className = "col-4";
     tr.appendChild(row1);
 
     var img = document.createElement("img");
@@ -91,9 +107,8 @@ function CamerasPrice(elementform) {
     total.textContent = prixTotal + "€";
 }
 
-//Rajouter option enlever caméra par caméra dans le panier//
 
-//Vider le panier 
+//Option vider le panier 
 function viderPanier() {
     const vider = document.querySelector(".cart_button_clear");
     vider.addEventListener('click', (e)=>{
@@ -112,25 +127,55 @@ function viderPanier() {
 viderPanier();
 
 ///////////////////////////////////////FORMULAIRE/////////////////////////////////////////////////////
-function dataButton() {
+//Fonction contact pour données formulaire 
+function DataContact () {
+    let lastName = document.querySelector("#lastName").value;
+    let firstName = document.querySelector("#firstName").value;
+    let address = document.querySelector("#address").value;
+    let city = document.querySelector("#city").value;
+    let email = document.querySelector("#email").value;
+     contact = new infoClients(lastName, firstName, address, city, email);
+};
 
+DataContact();
+
+function validateForm() {
+    var form = document.querySelector("#formulaire");
+    lastName = form.lastName.value;
+    firstName = form.firstName.value;
+    address = form.address.value;
+    city = form.city.value;
+    email = form.email.value;
+
+    if (/[A-Za-z-]{2,}/.test(lastName) &&
+     /[A-Za-z-]{2,}/.test(firstName) &&
+     /[a-zA-Z0-9]{2,}/.test(address) &&
+     /[A-Za-z-]{2,}/.test(city) && 
+     /[a-z 0-9._-]+@[a-z 0-9.-]{2,}[.][a-z]{2,3}/.test(email)) {
+        DataContact();
+        alert("Valide");
+        return true;
+    }else{
+        alert("Invalide");
+        return false;
+    }
+
+}
+
+function dataButton() {
+    
     //bouton envoyer formulaire 
     const bouton = document.querySelector(".btn-primary");
 
     bouton.addEventListener('click', (e) => {
-        e.preventDefault();    
+        e.preventDefault();
 
-        const contact = {
-            lastName : document.querySelector("#nom").value,
-            firstName : document.querySelector("#prenom").value,
-            address : document.querySelector("#adresse").value,
-            city : document.querySelector("#ville").value,
-            email : document.querySelector("#mail").value,
-        };
+        //Vérification des données 
+        validateForm();
 
         //Mettre objet dans le localStorage
         localStorage.setItem("contact", JSON.stringify(contact));
-
+        
         //Mettre valeurs à envoyer sur le serveur 
             const update = {
             contact,
@@ -138,6 +183,7 @@ function dataButton() {
         }
 
         pushData = async () => {
+            const location = window.location.hostname;
             //elements de la methode post
             const options = {
                 method: "POST",
@@ -151,11 +197,8 @@ function dataButton() {
                 if (res.ok) {
                     let value = await res.json();
                     const orderId = value.orderId;
-                    
                     //stockage du prix total pour la page confirmation
                     localStorage.setItem("orderId", JSON.stringify(orderId));
-                    
-                    console.log(orderId);
                     console.log("données bien envoyées");
                     window.location.href = "confirmation.html";
                 } else { 
@@ -165,10 +208,10 @@ function dataButton() {
                 console.log("err"); 
             }
         }
+
         //appelle de la fonction 
         pushData();
-    }) 
+        }) 
 }
 
 dataButton();
-
