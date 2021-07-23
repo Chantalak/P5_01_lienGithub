@@ -134,10 +134,87 @@ p{
 }
 
 .container_panier{
-    margin: 50px;
+    margin: 5% 10%;
+}
+
+.contenu_panier{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .image_panier{
-
     width: 50%;
+}
+
+#formulaire{
+    margin: 0% 10%;
+}
+
+/*CORPS PAGE PANIER*/ 
+.itext{
+    width: 100%;
+    text-align: center;
+    font-size: 7rem;
+    margin-top: 100px;
+}
+
+.texte{
+    font-size: 1.1rem;
+}
+
+/*CORPS PAGE CONFIRMATION*/ 
+.remerciement{
+    width: 100%;
+    text-align: center;
+    margin-top: 10%;
+}
+
+#btn-confirmation{
+    margin-top: 5%;
+}
+
+/*Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575px) {
+    /*CORPS PAGE INDEX*/
+    .box{
+        justify-content: center;
+    }
+
+    /*CORPS PAGE PRODUIT*/
+    .main_produit{
+        flex-direction: column;
+    }
+
+    /*CORPS PAGE PANIER*/
+    .container_panier{
+        margin: 10% 0% 0% 0%;
+    }
+    .panier_head{
+        display: none;
+    }
+
+    .image_panier{
+        width: 100%;
+    }
+
+    .btn_panier{
+        display: flex;
+        justify-content: space-around;
+        width: fit-content;
+        margin-top: 10px;
+    }
+
+    #formulaire{
+        margin: 0%;
+    }
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 991px) {
+     /*CORPS PAGE INDEX*/
+    .box{
+        justify-content: center;
+        width: 100%;
+    }
 }
