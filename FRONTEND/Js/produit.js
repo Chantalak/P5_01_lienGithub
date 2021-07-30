@@ -1,4 +1,4 @@
-// Récupérer un objet par le biais de id
+//Récupérer un objet par le biais de id
 async function fetchIdJSON() {
   try {
     //--- Récupération de la chaine de requete dans l'URL ---
@@ -24,7 +24,7 @@ fetchIdJSON().then(idProduct => {
   exportLenses(idProduct);
 });
 
-// Afficher les caractéristiques du produit dans le DOM
+//Afficher les caractéristiques du produit dans le DOM
 function displayProduct(idProduct) {
   var image = document.querySelector(".image_loading");
   image.src = idProduct.imageUrl;
@@ -39,7 +39,7 @@ function displayProduct(idProduct) {
   description.textContent = idProduct.description;
 }
 
-//choix des lentilles 
+//Choix des lentilles 
 function selectLenses(idProduct) {
   var lensesChoose = idProduct.lenses; 
   
@@ -56,7 +56,6 @@ function selectLenses(idProduct) {
 }
 
 //---Récupération données sélectionnées par utilisateur et envoie panier---
-
 function exportLenses(idProduct) {
   //Selection id formulaire 
   const idForm = document.querySelector("#cameras_lenses");
