@@ -2,7 +2,7 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">  
         
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
         <link rel="stylesheet" href="/FRONTEND/Css/style.css" /> 
-        <title>Appareil Photo Vintage Orinoco - Accueil</title>
+        <title>Appareil Photo Vintage Orinoco - Page panier</title>
     </head>
 
     <body>
@@ -50,7 +50,7 @@
                         </tbody>
 
                         <tfoot class="panier_foot">
-                            <tr class="form-row">
+                            <tr class="form-row col 12">
                                 <td class="tposition col-10">Total :</td>
                                 <td class="total col-2">Total</td>
                             </tr>
@@ -59,7 +59,9 @@
 
                     <div class="btn_panier">
                         <button type="button" class="button cart_button_clear">Vider le panier</button>
-                        <button type="button" class="button return_home"><a href="../View/index.html">Continuer son Shopping</a></button>
+                        <a href="../View/index.html">
+                            <button type="button" class="button return_home">Continuer son Shopping</button>
+                        </a>
                     </div>
                 </section>
                 
@@ -98,7 +100,7 @@
         
         
         <!--script-->
-        <script type="text/javascript" src="/FRONTEND/Js/panier.js"></script>
+        <script src="/FRONTEND/Js/panier.js"></script>
     </body>
 
 </html>
