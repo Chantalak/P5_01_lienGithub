@@ -23,6 +23,12 @@ ul{
 
 button{
     padding: 0.5rem;
+    border: none;
+}
+
+button:hover{
+    background-color: #d3d3c1;
+    border: none;
 }
 
 #bloc_page{
@@ -106,7 +112,7 @@ p{
 /*CORPS PAGE PRODUIT*/
 .main_image{
     height: 100%;
-    padding: 4%;
+    padding: 30px;
 }
 
 .image_loading{
@@ -132,7 +138,6 @@ p{
     flex-flow: column wrap;
     justify-content: space-between;
 }
-
 .container_panier{
     margin: 5% 10%;
 }
@@ -199,8 +204,6 @@ p{
     }
 
     .btn_panier{
-        display: flex;
-        justify-content: space-around;
         width: fit-content;
         margin-top: 10px;
     }
@@ -210,11 +213,20 @@ p{
     }
 }
 
-/*Medium devices (tablets, 768px and up)*/
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 575px) and (max-width: 991px) {
      /*CORPS PAGE INDEX*/
     .box{
         justify-content: center;
         width: 100%;
+    }
+}
+
+@media (min-width: 1080px) {
+    /*CORPS PAGE PRODUIT*/
+    .main_image{
+        margin: 0% 0% 10% 10%;
+    }
+    .main_description{
+        margin: 0% 10% 10% 0%;;
     }
 }

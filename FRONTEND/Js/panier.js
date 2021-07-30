@@ -134,11 +134,11 @@ function DataContact () {
     let address = document.querySelector("#address").value;
     let city = document.querySelector("#city").value;
     let email = document.querySelector("#email").value;
-     contact = new infoClients(lastName, firstName, address, city, email);
+    contact = new infoClients(lastName, firstName, address, city, email);
 };
-
 DataContact();
 
+//Fonction validation du formulaire 
 function validateForm() {
     var form = document.querySelector("#formulaire");
     lastName = form.lastName.value;
@@ -159,11 +159,10 @@ function validateForm() {
         alert("Invalide");
         return false;
     }
-
 }
 
+//fonction Envoi du formulaire et validation de la commande
 function dataButton() {
-    
     //bouton envoyer formulaire 
     const bouton = document.querySelector(".btn-primary");
 
@@ -196,8 +195,8 @@ function dataButton() {
                 const res = await fetch("http://localhost:3000/api/cameras/order", options);
                 if (res.ok) {
                     let value = await res.json();
+                    //Récupération de l'orderId 
                     const orderId = value.orderId;
-                    //stockage du prix total pour la page confirmation
                     localStorage.setItem("orderId", JSON.stringify(orderId));
                     console.log("données bien envoyées");
                     window.location.href = "confirmation.html";
@@ -215,3 +214,4 @@ function dataButton() {
 }
 
 dataButton();
+

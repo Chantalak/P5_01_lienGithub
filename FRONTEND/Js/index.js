@@ -1,5 +1,7 @@
+//Sélection de l'élement dans lequel va s'afficher les produits
 var box = document.querySelector(".box");
 
+//fonction avec une boucle for pour aafficher toutes les caméras de l'API
 function addCameras(value) {
 
   for (var i = 0; i < value.length; i++){ 
@@ -35,12 +37,6 @@ function addCameras(value) {
     p1.className ="price";
     p1.textContent = value[i].price /100 + "€" ;
     div.appendChild(p1);
-
-    //description
-    //let p2 = document.createElement("p");
-    //p2.className ="description";
-    //p2.textContent = value[i].description;
-    //div.appendChild(p2);
   }
 }
 
